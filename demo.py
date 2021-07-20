@@ -1,0 +1,23 @@
+def cagr(f,l):
+    l = pd.to_datetime(l, format='%Y-%m-%d')
+    f = pd.to_datetime(f, format='%Y-%m-%d')
+    print(f"Starting date {f}")
+    print(f"Starting date {l}")
+    N = ((l - f).days/365)
+    print(f"Years between start and end {N}")
+    L = float(df.loc[df['Time'] == l]['Price'].values[0])
+    F = float(df.loc[df['Time'] == f]['Price'].values[0])
+    CAGR = "{:.0%}".format(((L/F)**(1/N)))
+    plt.plot(df.Time,df.Price)
+    plt.title('Bitcoin Historic Price')
+    plt.axvspan(l, f, alpha=0.5, color='red')
+    plt.xlabel('BTC/USD Price')
+    plt.ylabel('Price (USD)')
+    #plt.yscale("log")
+    plt.show()
+    print(f"Final Price is: {F}")
+    print(f"Starting Price is: {L}")
+    print(f"The CAGR between {f.date()} and {l.date()} is {CAGR}")
+    return 
+    
+ #cagr('2013-01-30','2019-07-18')
